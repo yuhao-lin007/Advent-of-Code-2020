@@ -14,21 +14,21 @@ def get_valid_entries(entries, nums_used, total_required):
         #print(f"Indices: {indices} ({checks})")
 
         checks += 1
-        # Check if numbers based on index values totals to required value
-        numbers = [entries[index] for index in indices]
+        # Check if numbers based on indice values totals to required value
+        numbers = [entries[indice] for indice in indices]
         if sum(numbers) == total_required:
             #print(f"Checks: {checks}")
             return numbers
 
         indices[last_indice_index] += 1
 
-        # Overflow to next index(es) if required
+        # Overflow to next indice(s) if required
         for i in range(nums_used-1, 0, -1):
-            min_index = max(indices[:i]) + 1
-            max_index = length - nums_used + i
-            if indices[i] > max_index:
+            min_indice = max(indices[:i]) + 1
+            max_indice = length - nums_used + i
+            if indices[i] > max_indice:
                 indices[i-1] += 1
-                indices[i] = min_index
+                indices[i] = min_indice
 
         # Check if it has reached the end
         if indices[0] > length - nums_used:
