@@ -47,4 +47,3 @@ print()
 # Part 2
 print("Part 2")
 print("Passwords Valid:", num_valid_new)
-
