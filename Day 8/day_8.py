@@ -1,5 +1,3 @@
-from copy import deepcopy
-
 # A bit overengineered but oh well
 
 class Program:
