@@ -5,6 +5,8 @@ Derk-Jan Karrenbeld (https://dev.to/sleeplessbyte/comment/194fe)
 u/rawlexander (https://www.reddit.com/r/adventofcode/comments/ka8z8x/2020_day_10_solutions/ggmm6av/, https://youtu.be/KzTBz--x47E)
 """
 
+OUTLET_RATING = 0
+
 def get_possible_next_adapters(adapters, rating):
 	next_adapters = []
 	for adapter in adapters:
@@ -48,8 +50,6 @@ def get_possible_chains(adapters): # UNUSED: Too inefficient for puzzle input bu
 					possible_chains[i] = chain_new
 					possible_chains_adapters_left[i] = adapters_left_new
 	return possible_chains
-
-OUTLET_RATING = 0
 
 with open("input.txt", "r") as file:
 	adapters = [int(line) for line in file.read().split()]
