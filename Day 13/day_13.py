@@ -47,7 +47,11 @@ def chinese_remainder_theorem(bus_ids):
 		bi = (bus_id - offset) % bus_id
 		info.append(bi)
 
-		ni = id_product / bus_id
+		# Using floor division here means ni will be an integer instead of a float
+		# When a float is greater than 2^53 then precision issues will occur
+		# ni on its own isn't greater than 2^53 (at least in the puzzle input)
+		# But x is so x must be an integer (which it will be if bi, ni, and xi are all integers)
+		ni = id_product // bus_id
 		info.append(ni)
 
 		c = ni % bus_id
@@ -56,8 +60,7 @@ def chinese_remainder_theorem(bus_ids):
 			xi += 1
 		info.append(xi)
 
-		# TODO: Find out why if ni is not casted as an int x becomes a completely different value (Python bug?)
-		x += bi * int(ni) * xi
+		x += bi * ni * xi
 
 	t = x % id_product
 
