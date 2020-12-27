@@ -38,19 +38,19 @@ def evaluate_simple_expression_part_2(expression):
 	return evaluate_simple_expression_linearly(expression)
 
 
-def evaluate_expression(expression, simple_expression_parser):
+def evaluate_expression(expression, simple_expression_evaluator):
 	inner_brackets = re.findall("\([^()]+\)", expression)
 	while len(inner_brackets) > 0:
 		for exp in inner_brackets:
 			simple_exp = re.sub("[()]", "", exp)
 			expression = expression.replace(
 				exp,
-				str(evaluate_expression(simple_exp, simple_expression_parser)),
+				str(evaluate_expression(simple_exp, simple_expression_evaluator)),
 				1)
 		
 		inner_brackets = re.findall("\([^()]+\)", expression)
 	
-	return simple_expression_parser(expression)
+	return simple_expression_evaluator(expression)
 
 
 with open("input.txt", "r") as file:
